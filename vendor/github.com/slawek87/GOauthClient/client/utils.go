@@ -9,8 +9,8 @@ import (
 	"encoding/base64"
 )
 
-func (goAuth *GOauth) GetURL(url string) string {
-	settings := goAuth.Client.Settings
+func (client *Client) GetURL(url string) string {
+	settings := client.Settings
 	return settings["PROTOCOL"] + "://" + settings["HOST"] + ":" + settings["PORT"] + url
 }
 

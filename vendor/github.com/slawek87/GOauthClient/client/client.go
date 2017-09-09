@@ -98,7 +98,7 @@ func (client *Client) mapStructure(data map[string]interface{}, result interface
 func (client *Client) postRequest(url string, formData map[string]string, result interface{}) (map[string]interface{}, interface{}) {
 	var data map[string]interface{}
 
-	client.resty().SetFormData(formData).SetResult(&data).Post(url)
+	client.resty().SetFormData(formData).SetResult(&data).Post(client.GetURL(url))
 	client.mapStructure(data, result)
 
 	return data, result

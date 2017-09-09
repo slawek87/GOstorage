@@ -52,14 +52,20 @@
 [[projects]]
   branch = "master"
   name = "github.com/slawek87/GOauthClient"
-  packages = ["authorization","client","endpoints","storage"]
-  revision = "8469ea479143dd36194a224414892ef35e53074c"
+  packages = ["client","endpoints","storage"]
+  revision = "500bee8b332d578c13c7f84623a8764c40499154"
 
 [[projects]]
   branch = "master"
   name = "github.com/ugorji/go"
   packages = ["codec"]
   revision = "8c0409fcbb70099c748d71f714529204975f6c3f"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/crypto"
+  packages = ["bcrypt","blowfish"]
+  revision = "81e90905daefcd6fd217b62423c0908922eadb30"
 
 [[projects]]
   branch = "master"
@@ -100,6 +106,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "87a0fc437ec941715c90c59eb1bbf74e22828b135b492e7dd4f489dcd5b0454e"
+  inputs-digest = "93f529e84b74c9d7f03e1558c0c403388ea86edbed3c6b17c0539aace96b6fc2"
   solver-name = "gps-cdcl"
   solver-version = 1
