@@ -2,12 +2,13 @@ package settings
 
 import "github.com/slawek87/GOauthClient/client"
 
+
 var Settings = map[string]string {
 	"HOST": "0.0.0.0",
 	"PROTOCOL": "http",
 	"PORT": "8090",
-	"SERVICE_TOKEN": "580f4525-a97a-4ce8-8b5a-d4cf359771ae",
-	"SERVICE_LOGIN": "GOblog",
+	"SERVICE_TOKEN": "fb008237-c46a-4823-b027-c2ea2f49340d",
+	"SERVICE_LOGIN": "GOstorage",
 }
 
 func GOauth() client.GOauth {
