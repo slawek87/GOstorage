@@ -33,7 +33,7 @@ var (
 	sshPub   = flag.String("ssh_public_key", "", "ssh public key file to authorize. Can modify later in Google's web UI anyway.")
 	staticIP = flag.String("static_ip", "130.211.116.44", "Static IP to use. If empty, automatic.")
 
-	writeObject  = flag.String("write_object", "", "If non-empty, a VM isn't created and the flag value is Google Cloud Storage bucket/object to write. The contents from stdin.")
+	writeObject  = flag.String("write_object", "", "If non-empty, a VM isn't created and the flag value is Google Cloud Token bucket/object to write. The contents from stdin.")
 	publicObject = flag.Bool("write_object_is_public", false, "Whether the object created by --write_object should be public.")
 )
 

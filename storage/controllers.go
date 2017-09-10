@@ -1,25 +1,33 @@
 package storage
 
 import (
-	"time"
+	"mime/multipart"
+	"errors"
 	"github.com/slawek87/GOstorage/settings"
+	"github.com/slawek87/GOstorage/service"
 )
 
-func(service *Service) RegisterService(password string) (*Service, error) {
-	goauth := settings.GOauth()
-
-	service.CreatedAt = time.Now()
-	service.UpdatedAt = time.Now()
-	service.Storage, _ = service.GenerateHash()
-
-	db, _ := settings.InitDB()
-	db.NewRecord(&service)
-	query := db.Create(&service)
-
-	//register user in GOauth API.
-	if query.Error == nil {
-		goauth.RegisterUser(service.Name, password)
+func (storage *Storage) UploadFile(file multipart.File, header *multipart.FileHeader, token string) (*Storage, error) {
+	if file == nil {
+		return storage, errors.New("No file.")
 	}
 
-	return service, query.Error
+	var record service.Service
+	name, _, _ := DecodeToken(token)
+
+	db, _ := settings.InitDB()
+	db.Where(&service.Service{Name:name}).First(&record)
+
+	filename, err := storage.SaveFile(file, header, record.Token)
+
+	if err != nil {
+		return storage, err
+	}
+
+    storage.FileName = filename
+    storage.ServiceID = record.ID
+
+	query := db.Save(&storage)
+
+    return storage, query.Error
 }

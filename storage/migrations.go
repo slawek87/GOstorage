@@ -7,6 +7,5 @@ func InitMigrations() {
 	db, _ := settings.InitDB()
 
 	db.LogMode(true)
-	db.AutoMigrate(&Service{})
+	db.AutoMigrate(&Storage{})
 }
-

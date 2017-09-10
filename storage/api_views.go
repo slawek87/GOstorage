@@ -5,16 +5,20 @@ import (
 	"net/http"
 )
 
-func ServiceRegisterAPI(c *gin.Context) {
-	service := Service{}
-	c.Bind(&service)
+func UploadFileAPI(c *gin.Context) {
+	file, header , err := c.Request.FormFile("upload")
+	token := c.GetHeader("Authorization")
 
-	_, err := service.RegisterService(c.PostForm("Password"))
+	storage := Storage{}
+	c.Bind(&storage)
+
+	_, err = storage.UploadFile(file, header, token)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusCreated, &service)
+	c.JSON(http.StatusCreated, map[string]interface{}{"Uploaded": &storage.FileName})
 }
+

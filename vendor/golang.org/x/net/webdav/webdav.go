@@ -675,7 +675,7 @@ func StatusText(code int) string {
 	case StatusFailedDependency:
 		return "Failed Dependency"
 	case StatusInsufficientStorage:
-		return "Insufficient Storage"
+		return "Insufficient Token"
 	}
 	return http.StatusText(code)
 }
