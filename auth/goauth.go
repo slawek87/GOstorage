@@ -7,7 +7,7 @@ var Settings = map[string]string {
 	"HOST": "0.0.0.0",
 	"PROTOCOL": "http",
 	"PORT": "8090",
-	"SERVICE_TOKEN": "fb008237-c46a-4823-b027-c2ea2f49340d",
+	"SERVICE_TOKEN": "ce229503-7eac-4908-ad59-f4ba8521002a",
 	"SERVICE_LOGIN": "GOstorage",
 }
 
