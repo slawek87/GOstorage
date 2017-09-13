@@ -13,15 +13,17 @@ func main() {
 	storage.InitMigrations()
 
 	goauth := auth.GOauth()
-	r := gin.Default()
+	router := gin.Default()
 
-	v1 := r.Group("api/v1/")
+	v1 := router.Group("api/v1/")
 	{
 			v1.POST("/service/register", service.ServiceRegisterAPI)
 			v1.POST("/storage/file/upload",  goauth.AuthenticationMiddleware, storage.UploadFileAPI)
 	}
 
-	r.Run(":8070")
+	router.Static("/storage", "./uploaded_files")
+
+	router.Run(":8070")
 }
 
 

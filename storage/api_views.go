@@ -19,6 +19,6 @@ func UploadFileAPI(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, map[string]interface{}{"Uploaded": &storage.FileName})
+	c.JSON(http.StatusCreated, map[string]interface{}{"Uploaded": storage.GetUrl()})
 }
 
