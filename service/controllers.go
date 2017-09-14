@@ -11,7 +11,7 @@ func(service *Service) RegisterService(password string) (*Service, error) {
 
 	service.CreatedAt = time.Now()
 	service.UpdatedAt = time.Now()
-	service.Token, _ = service.GenerateHash()
+	service.Token = service.GenerateToken()
 
 	db, _ := settings.InitDB()
 	db.NewRecord(&service)

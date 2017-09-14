@@ -19,6 +19,21 @@ func UploadFileAPI(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, map[string]interface{}{"Uploaded": storage.GetUrl()})
+	c.JSON(http.StatusCreated, map[string]interface{}{"Uploaded": storage.FileName})
 }
 
+func DeleteFileAPI(c *gin.Context) {
+	token := c.GetHeader("Authorization")
+
+	storage := Storage{}
+	c.Bind(&storage)
+
+	err := storage.DeleteFile(token)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusCreated, map[string]interface{}{"Deleted": storage.FileName})
+}

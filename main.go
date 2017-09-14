@@ -17,8 +17,9 @@ func main() {
 
 	v1 := router.Group("api/v1/")
 	{
-			v1.POST("/service/register", service.ServiceRegisterAPI)
-			v1.POST("/storage/file/upload",  goauth.AuthenticationMiddleware, storage.UploadFileAPI)
+	    v1.POST("/service/register", service.ServiceRegisterAPI)
+		v1.POST("/storage/file/delete",  goauth.AuthenticationMiddleware, storage.DeleteFileAPI)
+		v1.POST("/storage/file/upload",  goauth.AuthenticationMiddleware, storage.UploadFileAPI)
 	}
 
 	router.Static("/storage", "./uploaded_files")
