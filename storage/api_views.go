@@ -26,12 +26,12 @@ func DeleteFileAPI(c *gin.Context) {
 	token := c.GetHeader("Authorization")
 
 	storage := Storage{}
-	c.Bind(&storage)
+	c.Bind(&storage) // must be set FileName
 
 	err := storage.DeleteFile(token)
 
 	if err != nil {
-		c.JSON(http.StatusBadRequest, err.Error())
+		c.JSON(http.StatusBadRequest, map[string]interface{}{"Deleted": "no such file"})
 		return
 	}
 
